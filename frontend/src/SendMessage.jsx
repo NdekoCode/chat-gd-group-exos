@@ -1,6 +1,26 @@
 import React from "react";
+import { useCallback } from "react";
+import { useState } from "react";
+import MessageContext from "./data/AppContext";
 
 const SendMessage = () => {
+  const [value, setValue] = useState("");
+  const handleChange = ({ target }) => {
+    setValue(target.value);
+    console.log(target.value);
+  };
+  const sendMsg = () => {
+    if (value.toString().trim().length > 2) {
+      setMessages((message) => [
+        ...message,
+        { id: Date.now(), content: value, created_at: new Date().getTime() },
+      ]);
+      setValue("");
+    } else {
+      alert("Entrer un message valide");
+    }
+  };
+  const { setMessages } = MessageContext();
   return (
     <div className="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4">
       <div>
@@ -25,7 +45,9 @@ const SendMessage = () => {
         <div className="relative w-full">
           <input
             type="text"
+            value={value}
             className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
+            onChange={handleChange}
           />
           <button className="absolute flex items-center justify-center h-full w-12 right-0 top-0 text-gray-400 hover:text-gray-600">
             <svg
@@ -46,7 +68,10 @@ const SendMessage = () => {
         </div>
       </div>
       <div className="ml-4">
-        <button className="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-1 flex-shrink-0">
+        <button
+          className="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-1 flex-shrink-0"
+          onClick={sendMsg}
+        >
           <span>Send</span>
           <span className="ml-2">
             <svg
