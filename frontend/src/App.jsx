@@ -1,32 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
+import mainImg from './assets/img/chat.avif'
+import mainImg from './assets/img/'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div classNameName="App">
+      <div className="container mx-auto">
+        <header>
+            <h1 className="font-bold text-3xl">Chat App</h1>
+        </header>
+        <h2 className="m-5 font-bold text-2xl ">Bienvenue sur notre application de Chat</h2>
+            <p className="m-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem, ex aut, suscipit, quibusdam modi enim quod perferendis architecto magnam dicta amet nam maxime hic eaque nulla repellendus placeat harum vel?</p>
+        <div className="pub-user1">
+            <div className="img-user1">
+              <img src="" alt="user1" />
+            </div>
+            <div className="msg"><p>Hi Ted!</p></div>
+            <div className="msg"><p>How are you doing?</p></div>
+        </div>
+        <div className="flex shadow p-3 rounded">
+            <img src={mainImg} alt="main image" />
+        </div>
+            <button className="p-2 rounded shadow"><a href="">Débuter une discussion</a></button>
+        <div className="pub-user2">
+              <div className="img-user1">
+                <img src="" alt="" />
+              </div>
+            <div className="msg"><p>Hi Mr Tobby!</p></div>
+            <div className="msg"><p>All things are right</p></div>            
+        </div>
+    </div>
     </div>
   )
 }
