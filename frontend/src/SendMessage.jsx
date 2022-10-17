@@ -5,9 +5,13 @@ import MessageContext from "./data/AppContext";
 
 const SendMessage = () => {
   const [value, setValue] = useState("");
-  const handleChange = ({ target }) => {
-    setValue(target.value);
-    console.log(target.value);
+  const handleChange = (evt) => {
+    if (evt.key === "Enter") {
+      sendMsg();
+    } else {
+      setValue(evt.target.value);
+      console.log(target.value);
+    }
   };
   const sendMsg = () => {
     if (value.toString().trim().length > 2) {
@@ -47,6 +51,7 @@ const SendMessage = () => {
             type="text"
             value={value}
             className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
+            onKeyDown={handleChange}
             onChange={handleChange}
           />
           <button className="absolute flex items-center justify-center h-full w-12 right-0 top-0 text-gray-400 hover:text-gray-600">
