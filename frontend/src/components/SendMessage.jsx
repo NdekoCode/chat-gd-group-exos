@@ -1,13 +1,17 @@
 import React from "react";
 import { useCallback } from "react";
 import { useState } from "react";
-import MessageContext from "./data/AppContext";
+import MessageContext from "../data/AppContext";
 
 const SendMessage = () => {
   const [value, setValue] = useState("");
-  const handleChange = ({ target }) => {
-    setValue(target.value);
-    console.log(target.value);
+  const handleChange = (evt) => {
+    if (evt.key === "Enter") {
+      sendMsg();
+    } else {
+      setValue(evt.target.value);
+      console.log(target.value);
+    }
   };
   const sendMsg = () => {
     if (value.toString().trim().length > 2) {
@@ -47,6 +51,7 @@ const SendMessage = () => {
             type="text"
             value={value}
             className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
+            onKeyDown={handleChange}
             onChange={handleChange}
           />
           <button className="absolute flex items-center justify-center h-full w-12 right-0 top-0 text-gray-400 hover:text-gray-600">
@@ -72,7 +77,7 @@ const SendMessage = () => {
           className="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-1 flex-shrink-0"
           onClick={sendMsg}
         >
-          <span>Send</span>
+          <span>Envoyer</span>
           <span className="ml-2">
             <svg
               className="w-4 h-4 transform rotate-45 -mt-px"

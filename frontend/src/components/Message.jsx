@@ -10,7 +10,7 @@ const Message = ({ index, message }) => {
     <div className={`${classBody} p-3 rounded-lg`}>
       <div className={`flex ${classContent} items-center`}>
         <div className="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0">
-          A
+          {index % 2 === 0 ? "A" : "B"}
         </div>
         <div
           className={`relative ${classMsg} text-sm  py-2 px-4 shadow rounded-xl`}

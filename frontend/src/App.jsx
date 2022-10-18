@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ChatContainer from "./ChatContainer";
+import ChatContainer from "./components/ChatContainer";
 
 function App() {
   const [count, setCount] = useState(0);

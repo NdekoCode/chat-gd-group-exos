@@ -7,7 +7,6 @@ export const ContextProvider = memo(({ children }) => {
     messages,
     setMessages,
   };
-
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 });
 const MessageContext = () => useContext(AppContext);
