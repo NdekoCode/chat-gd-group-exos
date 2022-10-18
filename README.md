@@ -8,6 +8,6 @@ L'application possède un utilisateur A et un utilisateur B.
 - Un bouton "Envoyer" sert à envoyer le message
 - Un message d'erreur s'affiche si l'utilisateur saisie moins de deux caractères
 ## Marche à suivre
-- Saisir un message d'au moins deux ou plusieurs caractères
-- 
+- Saisir un message valide
+- Envoyer le message avec le bouton "Envoyer"
 
