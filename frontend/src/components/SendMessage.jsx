@@ -1,31 +1,45 @@
 import React from "react";
+import { useCallback } from "react";
 import { useState } from "react";
 import MessageContext from "../data/AppContext";
 
 const SendMessage = () => {
+  const { messages, setMessages } = MessageContext();
   const [value, setValue] = useState("");
   const handleChange = (evt) => {
     if (evt.key === "Enter") {
-      sendMsg();
+      sendMsg(evt);
     } else {
       setValue(evt.target.value);
-      console.log(target.value);
+      console.log(evt.target.value);
     }
   };
-  const sendMsg = () => {
+  const sendMsg = useCallback((evt) => {
+    if (evt) {
+      evt.preventDefault();
+    }
     if (value.toString().trim().length > 2) {
       setMessages((message) => [
         ...message,
         { id: Date.now(), content: value, created_at: new Date().getTime() },
       ]);
+      (async () => {
+        const response = await fetch("http://localhost:9000", {
+          method: "POST",
+          body: JSON.stringify({ messages }),
+        });
+      })();
       setValue("");
     } else {
       alert("Entrer un message valide");
     }
-  };
-  const { setMessages } = MessageContext();
+  });
   return (
-    <div className="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4">
+    <form
+      method="POST"
+      onSubmit={sendMsg}
+      className="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4"
+    >
       <div>
         <button className="flex items-center justify-center text-gray-400 hover:text-gray-600">
           <svg
@@ -95,7 +109,7 @@ const SendMessage = () => {
           </span>
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 
