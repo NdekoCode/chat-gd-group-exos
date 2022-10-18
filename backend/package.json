@@ -2,11 +2,22 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
+<<<<<<< HEAD
   "main": "server.js",
   "scripts": {
     "serve":"nodemon server.js"
+=======
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+>>>>>>> 594c2f862507abf5583a01db5dc20a1deeb08704
   },
   "keywords": [],
   "author": "",
   "license": "ISC"
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 594c2f862507abf5583a01db5dc20a1deeb08704
